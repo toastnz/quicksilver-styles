@@ -20,15 +20,20 @@ $paragraph-text-elements: p, a, span, b, em, i, li, input, textarea, td, tr, tl,
     line-height: 1.5;
     margin-bottom: .8em;
   }
+  
+  %inherit {
+    font-size: inherit!important;
+    line-height: inherit!important;
+  }
 
   %default-heading-settings {
     line-height: 1.1;
     
     * {
-      font-size: inherit;
-      line-height: inherit;
+      @extend %inherit;
     }
   }
+
 
   %p {
     @extend %base-font-styles;
@@ -39,8 +44,8 @@ $paragraph-text-elements: p, a, span, b, em, i, li, input, textarea, td, tr, tl,
     margin-bottom: 0;
   }
 
-  p a {
-    font-size: inherit;
+  p * {
+    @extend %inherit;
   }
 
   @each $element, $size in $font-size-map {
