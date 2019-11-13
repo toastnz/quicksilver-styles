@@ -5,11 +5,11 @@
   ul,
   ol {
     &:not(.unstyled) {
-      padding-left: 2rem;
-      margin-bottom: 3rem;
+      padding-left: 20px;
+      margin-bottom: 30px;
 
       @include media($xmd) {
-        padding-left: 6rem;
+        padding-left: 60px;
       }
 
       &:before {
@@ -17,12 +17,12 @@
       }
 
       li {
-        padding-left: 1rem;
-        margin-bottom: 1rem;
+        padding-left: 10px;
+        margin-bottom: 10px;
 
         ul,
         ol {
-          margin-top: 1rem;
+          margin-top: 10px;
         }
       }
     }
@@ -42,11 +42,11 @@
   %bullet {
     &:before {
       content: '';
-      width: .6rem;
-      height: .6rem;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       top: .5em;
-      left: -1.9rem;
+      left: -19px;
     }
   }
 

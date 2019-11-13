@@ -1,4 +1,4 @@
-@mixin SpacingStyles($min: 5rem, $max: 10rem) {
+@mixin SpacingStyles($min: 50px, $max: 100px) {
   
   .contentBlock {
     position: relative;
