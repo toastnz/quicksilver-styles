@@ -21,7 +21,7 @@ body {
 
 ::selection {
   color: $white;
-  background: rgba($primary, .99999);
+  background: $primary;
 }
 
 ::-moz-focus-inner {

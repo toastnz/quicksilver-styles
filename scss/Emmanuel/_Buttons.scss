@@ -2,36 +2,70 @@
 // Button Styles
 //-----------------------------------------------------------------
 
+$ButtonHoverStyle: 'fade';
+
 @mixin button($color, $bordered: false) {
-  $btnTextColor: $white;
+	$btnTextColor: $white;
 
-  @if($color == $white) {
-    $btnTextColor: #000;
-  }
+	
+	@if($color == $white) {
+		$btnTextColor: #000;
+	}
 
-  @if($bordered) {
-    color: $color;
-    border-color: $color;
-    background-color: transparent;
 
-    @include active {
-      color: $btnTextColor;
-      border-color: $color;
-      background-color: $color;
-    }
-  }
+	@if($bordered) {
+		overflow: hidden;
+		color: $color;
+		border-color: $color;
+		background-color: transparent!important;
+		
+		@include ButtonHover($color) {
+			color: $btnTextColor;
+			border-color: $color;
+		}
+	}
 
-  @else {
-    color: $btnTextColor;
-    border-color: $color;
-    background-color: $color;
+	@else {
+		color: $btnTextColor;
+		border-color: $color;
+		background-color: $color;
 
-    @include active {
-      color: $color;
-      background-color: transparent;
-      border-color: $color;
-    }
-  }
+		@include active {
+			color: $color;
+			background-color: transparent;
+			border-color: $color;
+		}
+	}
+}
+
+@mixin ButtonHover($color) {
+	&:before {
+		background-color: $color;
+		@include transition(transform);
+		@if $ButtonHoverStyle == 'fade' {
+			background-color: transparent;
+			@include transition(background-color);
+		}@else if $ButtonHoverStyle == 'fromLeft' {
+			transform: translate(-100%, 0%);
+		}@else if $ButtonHoverStyle == 'fromRight' {
+			transform: translate(100%, 0%);
+		}@else if $ButtonHoverStyle == 'fromTop' {
+			transform: translate(0%, -100%);
+		}@else if $ButtonHoverStyle == 'fromBottom' {
+			transform: translate(0%, 100%);
+		}
+	}
+	@include active {
+		@content;
+
+		&:before {
+			@if $ButtonHoverStyle == 'fade' {
+				background-color: $color;
+			}@else  {
+				transform: translate(0%, 0%);
+			}
+		}
+	}
 }
 
 @mixin ButtonStyles {
@@ -42,29 +76,42 @@
 		padding: 0;
 		margin: 0;
 		outline: 0;
-		cursor: pointer;	
+		cursor: pointer;
+		overflow: hidden;
 		background-color: transparent;
 	}
 
 	%button-defaults {
 		@content;
 	}
-	
-	.button,
+
+	.button, 
 	[type="submit"] {
 		@extend %button-defaults;
 		color: $white;
 		border-color: $primary;
 		background-color: $primary;
-		&:hover,
-		&:focus {
-			background-color: transparent;
+
+		@include active {
 			color: $primary;
+			background-color: transparent;
 		}
 	}
 }
 
 @mixin ButtonClasses {
+	%button-bordered--hover {
+		&:before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+		}
+	}
+
 	.button {
 		@each $color, $value in $colour-map {
 			&.button--#{$color} {
@@ -72,6 +119,8 @@
 			}
 
 			&.button--bordered--#{$color} {
+				position: relative;
+				@extend %button-bordered--hover;
 				@include button($value, true);
 			}
 		}
