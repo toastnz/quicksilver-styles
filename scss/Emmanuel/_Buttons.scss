@@ -47,13 +47,13 @@ $ButtonHoverStyle: 'fade';
 			background-color: transparent;
 			@include transition(background-color);
 		}@else if $ButtonHoverStyle == 'fromLeft' {
-			transform: translate(-100%, 0%);
+			transform: translate(calc(-100% - 2px), 0%);
 		}@else if $ButtonHoverStyle == 'fromRight' {
-			transform: translate(100%, 0%);
+			transform: translate(calc(100% + 2px), 0%);
 		}@else if $ButtonHoverStyle == 'fromTop' {
-			transform: translate(0%, -100%);
+			transform: translate(0%, calc(-100% - 2px));
 		}@else if $ButtonHoverStyle == 'fromBottom' {
-			transform: translate(0%, 100%);
+			transform: translate(0%, calc(100% + 2px));
 		}
 	}
 	@include active {
