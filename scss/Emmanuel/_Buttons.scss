@@ -42,6 +42,7 @@ $ButtonHoverStyle: 'fade';
 	&:before {
 		background-color: $color;
 		@include transition(transform);
+		
 		@if $ButtonHoverStyle == 'fade' {
 			background-color: transparent;
 			@include transition(background-color);
