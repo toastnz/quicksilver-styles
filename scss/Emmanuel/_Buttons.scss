@@ -9,7 +9,7 @@ $ButtonHoverStyle: 'fade';
 
 	
 	@if($color == $white) {
-		$btnTextColor: #000;
+		$btnTextColor: $primary;
 	}
 
 

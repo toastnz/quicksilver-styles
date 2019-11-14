@@ -46,7 +46,6 @@
         width: 100%;
         max-width: 60rem;
         border-radius: 0;
-        color: $white;
 
         transition: border-radius .3s ease, padding .3s ease, width .3s ease;
 
@@ -73,6 +72,10 @@
           margin-bottom: 1.5rem;
           padding-bottom: 1.5rem;
           border-bottom: .2rem solid rgba($white, 0.3);
+
+          &__heading {
+            color: $white;
+          }
         }
 
         &__form {
@@ -85,11 +88,17 @@
             margin-bottom: 1rem;
           }
 
+          label {
+            color: $white;
+            font-size: 1.6rem;
+          }
+
           input:not([type="submit"]) {
             color: $white;
             border: none!important;
             border-radius: .5rem!important;
             background-color: rgba($white, .1)!important;
+            margin-bottom: 1rem;
             @include media($xmd) {
               border-radius: 1rem;
             }
@@ -97,7 +106,7 @@
 
           [type="submit"] {
             width: 100%;
-            @include button($white, true);
+            @include button($white);
           }
 
           [type="checkbox"] + label {
