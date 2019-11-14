@@ -1,6 +1,17 @@
 //------------------------------------------------------------------
 // Lists
 
+%bullet {
+    &:before {
+      content: '';
+      width: .6rem;
+      height: .6rem;
+      border-radius: 50%;
+      top: .5em;
+      left: -1.9rem;
+    }
+  }
+
 @mixin ListStyles {
   ul,
   ol {
@@ -17,8 +28,13 @@
       }
 
       li {
+        @extend %bullet;
         padding-left: 1rem;
         margin-bottom: 1rem;
+
+        &:before {
+          background-color: $primary;
+        }
 
         ul,
         ol {
@@ -39,24 +55,15 @@
   //------------------------------------------------------------------
   // Coloured Bullets
   
-  %bullet {
-    &:before {
-      content: '';
-      width: .6rem;
-      height: .6rem;
-      border-radius: 50%;
-      top: .5em;
-      left: -1.9rem;
-    }
-  }
-
   ul {
     @each $color, $value in $colour-map {
       &.coloured--#{$color} {
-        @extend %bullet;
+        li {
+          @extend %bullet;
 
-        &:before {
-          background-color: $color;
+          &:before {
+            background-color: $color;
+          }
         }
       }
     }

@@ -283,7 +283,8 @@ $transition-deceleration: cubic-bezier(0, 0, .2, 1);
   &:after {
     content: '';
     @include pos(absolute, 0);
-    background-color: rgba($color, $opacity);
+    background-color: $color;
+    opacity: $opacity;
   }
 }
 
