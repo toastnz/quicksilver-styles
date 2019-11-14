@@ -285,6 +285,7 @@ $transition-deceleration: cubic-bezier(0, 0, .2, 1);
     @include pos(absolute, 0);
     background-color: $color;
     opacity: $opacity;
+    transition: opacity .3s ease, background-color .3s ease;
   }
 }
 
