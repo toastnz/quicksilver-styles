@@ -16,8 +16,7 @@
   }
 
 @mixin ListStyles {
-  ul,
-  ol {
+  ul {
     &:not(.unstyled) {
       padding-left: 2rem;
       margin-bottom: 3rem;
@@ -32,24 +31,29 @@
 
       li {
         @extend %bullet;
-        // padding-left: 1rem;
         margin-bottom: 1rem;
 
         &:before {
           background-color: $primary;
         }
+      }
+    }
+  }
 
-        ul,
-        ol {
-          margin-top: 1rem;
-        }
+  ul,
+  ol {
+    li {
+      ul,
+      ol {
+        margin-top: 1rem;
       }
     }
   }
 
   ol {
-    &:not(.unstyled) {
-      list-style: decimal;
+    list-style: decimal;
+    li {
+      margin-bottom: 1rem;
     }
   }
 }
