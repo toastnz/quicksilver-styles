@@ -18,20 +18,11 @@
 @mixin ListStyles {
   ul {
     &:not(.unstyled) {
-      padding-left: 2rem;
-      margin-bottom: 3rem;
-
-      @include media($xmd) {
-        padding-left: 6rem;
-      }
-
       &:before {
         content: none;
       }
-
       li {
         @extend %bullet;
-        margin-bottom: 1rem;
 
         &:before {
           background-color: $primary;
@@ -40,9 +31,19 @@
     }
   }
 
-  ul,
-  ol {
+  ul:not(.unstyled),
+  ol:not(.unstyled) {
+    
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+
+    @include media($xmd) {
+      padding-left: 6rem;
+    }
+
     li {
+      margin-bottom: 1rem;
+
       ul,
       ol {
         margin-top: 1rem;
@@ -50,11 +51,8 @@
     }
   }
 
-  ol {
+  ol:not(.unstyled) {
     list-style: decimal;
-    li {
-      margin-bottom: 1rem;
-    }
   }
 }
 
