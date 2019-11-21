@@ -6,27 +6,7 @@
   .login {
     position: relative;
     height: 100vh;
-    // background: radial-gradient(circle, darken($white, 80%), darken($white, 100%));
     background-color: $secondary;
-    // background: radial-gradient(circle, $primary 0%, darken($primary, 20%));
-
-    &:before,
-    &:after {
-      content: '';
-      display: block;
-      @include pos(absolute, 0);
-    }
-
-    &:before {
-      opacity: 0.2;
-      // background: linear-gradient(45deg, darken($white, 80%), darken($white, 100%));
-    }
-
-    &:after {
-      // @include media($sm, max) {
-        // background-color: rgba($white, 0.8);
-      // }
-    }
 
     .loginHeight {
       height: 100vh;
@@ -50,7 +30,6 @@
         transition: border-radius .3s ease, padding .3s ease, width .3s ease;
 
         @include media($sm) {
-          // background-color: rgba($white, 0.4);
           width: calc(100% - #{$gutterWidth * 2});
           padding: 8rem 3rem;
           border-radius: 6rem;
@@ -58,7 +37,6 @@
 
         @include media($xmd) {
           padding: 8rem;
-          // border-radius: 6rem;
         }
 
 
@@ -81,27 +59,21 @@
         &__form {
           @include autofill($white);
 
-          padding-left: 2rem;
-          padding-right: 2rem;
-
           .field {
             margin-bottom: 1rem;
           }
 
           label {
+            display: block;
             color: $white;
             font-size: 1.6rem;
+            margin-bottom: 1rem;
           }
 
           input:not([type="submit"]) {
-            color: $white;
-            border: none!important;
-            border-radius: .5rem!important;
-            background-color: rgba($white, .1)!important;
-            margin-bottom: 1rem;
-            @include media($xmd) {
-              border-radius: 1rem;
-            }
+            @extend %input;
+            color: $white!important;
+            background-color: rgba($black, 0.2)!important;
           }
 
           [type="submit"] {
@@ -109,20 +81,27 @@
             @include button($white);
           }
 
-          [type="checkbox"] + label {
-            &:before {
-              border-color: $white;
-            }
+          .field.checkbox {
+            margin-top: 2rem;
 
-            &:after {
-              background-color: $white;
+            [type="checkbox"] {
+              @extend %checkbox; 
+
+              + label {
+                &:before {
+                  border-color: $white!important;
+                }
+
+                &:after {
+                  background-color: $white!important;
+                }
+              }
             }
           }
 
+
           .btn-toolbar {
-            width: calc(100% + #{$gutterWidth * 2});
-            margin-left: -$gutterWidth;
-            margin-right: -$gutterWidth;
+            margin-top: 2rem;
           }
 
           #ForgotPassword,
