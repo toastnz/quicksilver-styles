@@ -60,6 +60,7 @@
     @extend %checkbox;
 
     + label {
+      
       &:before,
       &:after {
         border-radius: 50%;
