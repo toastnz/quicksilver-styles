@@ -8,18 +8,33 @@ $ButtonHoverStyle: 'fade';
 	%button-defaults {
 		@content;
 	}
+
+	%button-bordered--hover {
+		position: relative;
+		
+		&:before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+		}
+	}
 }
 
 @mixin button($color, $bordered: false) {
+	@extend %button-defaults;
+
 	$btnTextColor: $white;
 
-	@extend %button-defaults;
-	
 	@if($color == $white) {
 		$btnTextColor: $primary;
 	}
 
 	@if($bordered) {
+		@extend %button-bordered--hover;
 		overflow: hidden;
 		color: $color;
 		border-color: $color;
@@ -105,18 +120,6 @@ $ButtonHoverStyle: 'fade';
 }
 
 @mixin ButtonClasses {
-	%button-bordered--hover {
-		&:before {
-			content: '';
-			position: absolute;
-			z-index: -1;
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%;
-		}
-	}
-
 	.button {
 		@each $color, $value in $colour-map {
 			&.button--#{$color} {
