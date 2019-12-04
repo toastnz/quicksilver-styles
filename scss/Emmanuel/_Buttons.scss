@@ -4,14 +4,20 @@
 
 $ButtonHoverStyle: 'fade';
 
+@mixin ButtonDefaults {
+	%button-defaults {
+		@content;
+	}
+}
+
 @mixin button($color, $bordered: false) {
 	$btnTextColor: $white;
 
+	@extend %button-defaults;
 	
 	@if($color == $white) {
 		$btnTextColor: $primary;
 	}
-
 
 	@if($bordered) {
 		overflow: hidden;
@@ -82,10 +88,6 @@ $ButtonHoverStyle: 'fade';
 		cursor: pointer;
 		overflow: hidden;
 		background-color: transparent;
-	}
-
-	%button-defaults {
-		@content;
 	}
 
 	.button, 
