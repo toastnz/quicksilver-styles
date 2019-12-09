@@ -10,6 +10,7 @@ $columnCount: 12;
 $rowClasses: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
 $columnClasses: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
 $gutterWidth: 2rem;
+$contentHeight: 40rem;
 
 $breakpoint-map: (
   'xxs': $xxs,
@@ -316,6 +317,10 @@ $grid-map: (
 
   &:not(.column) {
     width: 100%;
+  }
+
+  &.contentHeight {
+    height: $contentHeight;
   }
 
   > .contentRow {
