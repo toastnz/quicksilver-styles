@@ -31,7 +31,7 @@ $ButtonHoverStyle: 'fade';
 	$btnTextColor: $white;
 
 	@if($color == $white) {
-		$btnTextColor: $primary;
+		$btnTextColor: $text;
 	}
 
 	@if($bordered) {
@@ -94,7 +94,6 @@ $ButtonHoverStyle: 'fade';
 @mixin ButtonStyles {
 
 	// Button Reset
-	
 	button {
 		position: relative;
 		z-index: 1;
