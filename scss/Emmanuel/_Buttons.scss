@@ -14,6 +14,7 @@ $ButtonHoverStyle: 'fade';
 		
 		&:before {
 			content: '';
+			display: block;
 			position: absolute;
 			z-index: -1;
 			top: 0;
